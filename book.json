@@ -1,0 +1,6 @@
+{
+  "title": "LHCb Handbook",
+  "description": "A collection of curated, high-quality software tutorials for LHCb.",
+  "styles": {"website": "css/website.css"},
+  "plugins": ["katex"]
+}
