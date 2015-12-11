@@ -1,0 +1,19 @@
+branches:
+  only:
+  - master
+sudo: false
+language: node_js
+install:
+- npm install gitbook-cli -g
+- pip install --user beautifulsoup4
+- pip install --user ghp-import
+node_js: '4.1'
+script:
+- make _book
+- make test
+after_success:
+- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && make publish-travis > /dev/null 2>&1
+  || true'
+env:
+  global:
+    secure: JlndRcuaiK6QSk7wqObi2tzdOCYNOKymlnsV2p4r++n9avv18tLFjMiS9lt6js1vAcpsdaaWMmxXz/Tk0610fuVwg4vmFm/Kr28z6UJUEg9nQ2yFzRGHs0oeudUtPv0y6wx1CUGuT8utPKy88PFpvWcJ1a1tJtSbA2j0uF27jXsi0Ure7Lhdz2uAoo3d100EWobs/k/z4NbCdTyLy1gbh00EMBTUEWIvEDpdm2AAvKB+pKvEBevvbX73tjsFDvIMoOmUXVzRqQaOeq4Yv/pmCdqbYmN4jgV5iRgwscCgOJNGJcmwJodNZliyC3WBh5eJ4hNtQ996CR2j8K8Oy2Fmbm+crCdD1BebXrN85n6HdMO9VKSOJCmEufz1YwG828plVt8z1A8NrBJcj4OQA5Xak4ETi56Pw3pIy++BLtONDN8gyoGeREFriD1YPNV7Au90ebDsc2DT46AsAMkCPF0N+ED822w14uz8cMWCkkqr9nSQhDk14me1YB5p8mTmPRoAhk4IB3U6G4hvuVYVc7ullAJYNyw+53rF5kMPonVcgnKGt9J+Ir/WRd57EZz2yGJ/IELKJLZZIPK5xX96YzSNv9FhIZpQcJ2S+VElSZiMBxBa6oGxypxKQuezYNLQmIRYpIbCiNwWQ+MUXmFSmjHb13Qj+4DF7tMODvmBYUGNmBc=
